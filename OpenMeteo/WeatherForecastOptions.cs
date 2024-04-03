@@ -61,9 +61,16 @@ namespace OpenMeteo
 
         /// <summary>
         /// Default is "0". Other options: "1", "2"
+        /// Maximum: 92.
         /// </summary>
         /// <value></value>
         public int Past_Days { get; set; }
+
+        /// <summary>
+        /// Default is 7 days, even if not included in query.
+        /// Maximum: 16.
+        /// </summary>
+        public int Forecast_Days { get; set; } = 7;
 
         /// <summary>
         /// The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-06-30).
