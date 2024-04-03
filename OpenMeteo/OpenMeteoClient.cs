@@ -355,6 +355,7 @@ namespace OpenMeteo
             uri.Query += "&timeformat=" + options.Timeformat.ToString();
 
             uri.Query += "&past_days=" + options.Past_Days;
+            uri.Query += "&forecast_days=" + options.Forecast_Days;
 
             if (options.Start_date != string.Empty)
                 uri.Query += "&start_date=" + options.Start_date;
