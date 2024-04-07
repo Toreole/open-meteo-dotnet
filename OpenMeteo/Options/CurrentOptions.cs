@@ -8,6 +8,9 @@ namespace OpenMeteo.Options
 	/// </summary>
 	public class CurrentOptions : EnumOptionsBase<CurrentOptionsParameter>
     {
+        /// <summary>
+        /// Get an instance of CurrentOptions with all CurrentOptionsParameter values set.
+        /// </summary>
 		public static CurrentOptions All
 		{
 			get
@@ -16,13 +19,31 @@ namespace OpenMeteo.Options
 			}
 		}
 
+        /// <summary>
+        /// Create CurrentOptions with a predefined array of values
+        /// </summary>
+        /// <param name="values"></param>
 		public CurrentOptions(Enum[] values) : base(values) { }
+
+        /// <summary>
+        /// Create CurrentOptions with one value
+        /// </summary>
+        /// <param name="value"></param>
 		public CurrentOptions(Enum value) : base(value) { }
+
+        /// <summary>
+        /// Create the default CurrentOptions. See EnumOptionsBase.
+        /// </summary>
 		public CurrentOptions() : base() { }
 	}
 
-    public enum CurrentOptionsParameter
+	/// <summary>
+	/// Parameters for CurrentOptions that are guaranteed (within reason) to be available through the API.
+	/// Full documentation on these Options is available at https://open-meteo.com/en/docs and also included with <see cref="HourlyOptionsParameter"/> due to a large overlap.
+	/// </summary>
+	public enum CurrentOptionsParameter
     {
+#pragma warning disable CS1591
         temperature_2m,
         relative_humidity_2m,
         apparent_temperature,
@@ -38,5 +59,6 @@ namespace OpenMeteo.Options
         wind_speed_10m,
         wind_direction_10m,
         wind_gusts_10m
+#pragma warning restore CS1591
     }
 }

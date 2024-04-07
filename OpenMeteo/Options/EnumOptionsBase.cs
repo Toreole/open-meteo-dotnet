@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace OpenMeteo.Options
 {
@@ -12,29 +11,47 @@ namespace OpenMeteo.Options
 		/// </summary>
 		public List<Enum> Parameters { get { return new List<Enum>(_parameters); } }
 
+		/// <summary>
+		/// Parameter Count
+		/// </summary>
 		public int Count => _parameters.Count;
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool IsReadOnly => false;
 
 		private readonly List<Enum> _parameters;
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public EnumOptionsBase(Enum parameter)
 		{
 			_parameters = new List<Enum>();
 			Add(parameter);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public EnumOptionsBase(params Enum[] parameter)
 		{
 			_parameters = new List<Enum>();
 			Add(parameter);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public EnumOptionsBase()
 		{
 			_parameters = new List<Enum>();
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public Enum this[int index]
 		{
 			get { return _parameters[index]; }
@@ -56,14 +73,20 @@ namespace OpenMeteo.Options
 			_parameters.Add(param);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void Add(params Enum[] param)
 		{
-			foreach (HourlyOptionsParameter paramToAdd in param)
+			foreach (Enum paramToAdd in param)
 			{
 				Add(paramToAdd);
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public IEnumerator<Enum> GetEnumerator()
 		{
 			return _parameters.GetEnumerator();
@@ -74,21 +97,33 @@ namespace OpenMeteo.Options
 			return GetEnumerator();
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void Clear()
 		{
 			_parameters.Clear();
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool Contains(Enum item)
 		{
 			return _parameters.Contains(item);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void CopyTo(Enum[] array, int arrayIndex)
 		{
 			_parameters.CopyTo(array, arrayIndex);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool Remove(Enum item)
 		{
 			return _parameters.Remove(item);

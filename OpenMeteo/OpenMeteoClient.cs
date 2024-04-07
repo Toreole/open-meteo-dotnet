@@ -129,7 +129,7 @@ namespace OpenMeteo
         /// Gets air quality data for a given location with individual options
         /// </summary>
         /// <param name="options">options for air quality request</param>
-        /// <returns><see cref="AirQuality"/> if successfull or <see cref="null"/> if failed</returns>
+        /// <returns><see cref="AirQuality"/> if successfull or <see ref="null"/> if failed</returns>
         public async Task<AirQuality?> QueryAsync(AirQualityOptions options)
         {
             return await GetAirQualityAsync(options);
@@ -147,6 +147,11 @@ namespace OpenMeteo
             return await GetLocationDataAsync(geocodingOptions);
         }
 
+        /// <summary>
+        /// Asynchronously query the GeocodingAPI with options.
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public async Task<GeocodingApiResponse?> GetLocationDataAsync(GeocodingOptions options)
         {
             return await GetGeocodingDataAsync(options);
@@ -165,31 +170,63 @@ namespace OpenMeteo
             return (response.Locations[0].Latitude, response.Locations[0].Longitude);
         }
 
+        /// <summary>
+        /// Query WeatherForecast with specific options
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public WeatherForecast? Query(WeatherForecastOptions options)
         {
             return QueryAsync(options).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Query WeatherForecast for latitude and longitude with default settings
+        /// </summary>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        /// <returns></returns>
         public WeatherForecast? Query(float latitude, float longitude)
         {
             return QueryAsync(latitude, longitude).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Query WeatherForecast for a location with options
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public WeatherForecast? Query(string location, WeatherForecastOptions options)
         {
             return QueryAsync(location, options).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Query WeatherForecast with GeocodingOptions
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public WeatherForecast? Query(GeocodingOptions options)
         {
             return QueryAsync(options).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Get a default weather forecast for a location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         public WeatherForecast? Query(string location)
         {
             return QueryAsync(location).GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// Query AirQuality information
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public AirQuality? Query(AirQualityOptions options)
         {
             return QueryAsync(options).GetAwaiter().GetResult();
@@ -220,7 +257,7 @@ namespace OpenMeteo
         /// <returns><see cref="string"/> Weathercode string representation</returns>
         public string WeathercodeToString(int weathercode)
         {
-            switch (weathercode)
+			switch (weathercode)
             {
                 case 0:
                     return "Clear sky";
@@ -367,7 +404,6 @@ namespace OpenMeteo
                 uri.Query += "&end_date=" + options.End_date;
 
             // Now we iterate through hourly and daily
-            var x = HourlyOptions.All();
             // Hourly
             if (options.Hourly.Count > 0)
             {

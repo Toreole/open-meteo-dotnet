@@ -1,136 +1,103 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OpenMeteo.Options
 {
-    public class Minutely15Options : IEnumerable, ICollection<Minutely15OptionsParameter>
-    {
-        /// <summary>
-        /// Gets a new object containing every parameter
-        /// </summary>
-        /// <returns></returns>
-        public static Minutely15Options All { get { return new Minutely15Options((Minutely15OptionsParameter[])Enum.GetValues(typeof(Minutely15OptionsParameter))); } }
+	/// <summary>
+	/// Which 15minutely variables to get defined by <see cref="Minutely15OptionsParameter"/> <br/>
+	/// 15-minutely data can be requested for other weather variables that are available for hourly data, but will use interpolation.
+	/// </summary>
+	public class Minutely15Options : EnumOptionsBase<Minutely15OptionsParameter>
+	{
+		/// <summary>
+		/// Get an instance of Minutely15Options with all HourlyOptionsParameter values set.
+		/// </summary>
+		public static Minutely15Options All
+		{
+			get
+			{
+				return new Minutely15Options((Enum[])Enum.GetValues(typeof(Minutely15OptionsParameter)));
+			}
+		}
 
-        /// <summary>
-        /// Gets a copy of elements contained in the List.
-        /// </summary>
-        /// <typeparam name="Minutely15OptionsParameter"></typeparam>
-        /// <returns>A copy of elements contained in the List</returns>
-        public List<Minutely15OptionsParameter> Parameter { get { return new List<Minutely15OptionsParameter>(_parameter); } }
+		/// <summary>
+		/// Create Minutely15Options with a predefined array of values
+		/// </summary>
+		/// <param name="values"></param>
+		public Minutely15Options(Enum[] values) : base(values) { }
 
-        public int Count => _parameter.Count;
+		/// <summary>
+		/// Create Minutely15Options with one value
+		/// </summary>
+		/// <param name="value"></param>
+		public Minutely15Options(Enum value) : base(value) { }
 
-        public bool IsReadOnly => false;
+		/// <summary>
+		/// Create the default Minutely15Options. See EnumOptionsBase.
+		/// </summary>
+		public Minutely15Options() : base() { }
 
-        private readonly List<Minutely15OptionsParameter> _parameter = new List<Minutely15OptionsParameter>();
+	}
 
-        public Minutely15Options()
-        {
-
-        }
-
-        public Minutely15Options(Minutely15OptionsParameter parameter)
-        {
-            Add(parameter);
-        }
-
-        public Minutely15Options(Minutely15OptionsParameter[] parameter)
-        {
-            Add(parameter);
-        }
-
-        /// <summary>
-        /// Index the collection
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns><see cref="string"/> Minutely15OptionsParameter as string representation at index</returns>
-        public Minutely15OptionsParameter this[int index]
-        {
-            get { return _parameter[index]; }
-            set
-            {
-                _parameter[index] = value;
-            }
-        }
-
-        public void Add(Minutely15OptionsParameter param)
-        {
-            // Check that the parameter isn't already added
-            if (_parameter.Contains(param)) return;
-
-            _parameter.Add(param);
-        }
-
-        public void Add(Minutely15OptionsParameter[] param)
-        {
-            foreach (Minutely15OptionsParameter paramToAdd in param)
-            {
-                Add(paramToAdd);
-            }
-        }
-
-        public void Clear()
-        {
-            _parameter.Clear();
-        }
-
-        public bool Contains(Minutely15OptionsParameter item)
-        {
-            return _parameter.Contains(item);
-        }
-
-        public bool Remove(Minutely15OptionsParameter item)
-        {
-            return _parameter.Remove(item);
-        }
-
-        public void CopyTo(Minutely15OptionsParameter[] array, int arrayIndex)
-        {
-            _parameter.CopyTo(array, arrayIndex);
-        }
-
-        public IEnumerator<Minutely15OptionsParameter> GetEnumerator()
-        {
-            return _parameter.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    }
-
+	/// <summary>
+	/// Mostly the same as <see cref="HourlyOptionsParameter"/>
+	/// </summary>
     public enum Minutely15OptionsParameter
     {
-        temperature_2m,
-        relativehumidity_2m,
-        dewpoint_2m,
-        apparent_temperature,
-        precipitation,
-        rain,
-        snowfall,
-        snowfall_height,
-        freezinglevel_height,
-        weathercode,
-        windspeed_10m,
-        windspeed_80m,
-        winddirection_10m,
-        winddirection_80m,
-        windgusts_10m,
-        visibility,
-        cape,
-        lightning_potential,
-        shortwave_radiation,
-        direct_radiation,
-        diffuse_radiation,
-        direct_normal_irradiance,
-        terrestrial_radiation,
-        shortwave_radiation_instant,
-        direct_radiation_instant,
-        diffuse_radiation_instant,
-        direct_normal_irradiance_instant,
-        terrestrial_radiation_instant
-    }
+		/// <summary>
+		/// Air temperature at 2 meters above ground
+		/// </summary>
+		temperature_2m,
+		/// <summary>
+		/// Relative humidity at 2 meters above ground
+		/// </summary>
+		relativehumidity_2m,
+		/// <summary>
+		/// Dew point temperature at 2 meters above ground
+		/// </summary>
+		dewpoint_2m,
+		/// <summary>
+		/// Apparent temperature is the perceived feels-like temperature combining wind chill factor, relative humidity and solar radiation
+		/// </summary>
+		apparent_temperature,
+		/// <summary>
+		/// Shortwave solar radiation as average of the preceeding 15 minutes. This is equal to the total global horizontal irradiation
+		/// </summary>
+		shortwave_radiation,
+		/// <summary>
+		/// Direct solar radiation as average of the preceding 15 minutes on the horizontal plane and the normal plane (perpendicular to the sun)
+		/// </summary>
+		direct_radiation,
+		/// <summary>
+		/// Direct solar radiation as average of the preceding 15 minutes on the horizontal plane and the normal plane (perpendicular to the sun)
+		/// </summary>
+		direct_normal_irradiance,
+		/// <summary>
+		/// See <see cref="HourlyOptionsParameter.global_tilted_irradiance"/>
+		/// </summary>
+		global_tilted_irradiance,
+		/// <summary>
+		/// See <see cref="HourlyOptionsParameter.global_tilted_irradiance"/>
+		/// </summary>
+		global_tilted_irradiance_instance,
+		/// <summary>
+		/// Diffuse solar radiation as average of the preceding 15 minutes
+		/// </summary>
+		diffuse_radiation,
+#pragma warning disable CS1591
+		sunshine_duration,
+		lightning_potential,
+		precipitation,
+		snowfall,
+		rain,
+		showers,
+		snowfall_height,
+		freezing_level_height,
+		cape,
+		wind_speed_10m,
+		wind_speed_80m,
+		wind_gusts_10m,
+		visibility,
+		weather_code
+#pragma warning restore CS1591
+	}
 }

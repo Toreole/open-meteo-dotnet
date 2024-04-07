@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace OpenMeteo.Options
 {
+    /// <summary>
+    /// Geocoding Options for obtaining Latitude/Longitude and other info via Querying the Geocoding API.
+    /// </summary>
     public class GeocodingOptions
     {
         /// <summary>
@@ -33,6 +32,12 @@ namespace OpenMeteo.Options
         /// <value></value>
         public int Count { get; }
 
+        /// <summary>
+        /// Create Geocoding Options for a specific city and language
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="language"></param>
+        /// <param name="count"></param>
         public GeocodingOptions(string city, string language, int count)
         {
             Name = city;
@@ -41,6 +46,10 @@ namespace OpenMeteo.Options
             Count = count;
         }
 
+        /// <summary>
+        /// Create Geocoding Options for a city.
+        /// </summary>
+        /// <param name="city"></param>
         public GeocodingOptions(string city)
         {
             Name = city;
