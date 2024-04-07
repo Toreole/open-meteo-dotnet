@@ -20,10 +20,10 @@ namespace OpenMeteoTests
             Assert.IsNotNull(options.Hourly);
             Assert.IsNotNull(options.Current);
             Assert.IsNotNull(options.Minutely15);
-            Assert.AreEqual(0, options.Daily.Parameter.Count);
+            Assert.AreEqual(0, options.Daily.Parameters.Count);
             Assert.AreEqual(0, options.Hourly.Parameters.Count);
-            Assert.AreEqual(0, options.Current.Parameter.Count);
-            Assert.AreEqual(0, options.Minutely15.Parameter.Count);
+            Assert.AreEqual(0, options.Current.Parameters.Count);
+            Assert.AreEqual(0, options.Minutely15.Parameters.Count);
         }
 
         [TestMethod]
@@ -71,16 +71,16 @@ namespace OpenMeteoTests
             options.Daily.Add(DailyOptionsParameter.sunset);
             options.Daily.Add(DailyOptionsParameter.sunrise);
 
-            options.Hourly.Add(HourlyOptionsParameter.cloudcover_low);
-            options.Hourly.Add(HourlyOptionsParameter.cloudcover_high);
+            options.Hourly.Add(HourlyOptionsParameter.cloud_cover_low);
+            options.Hourly.Add(HourlyOptionsParameter.cloud_cover_high);
 
             Assert.IsTrue(options.Hourly.Parameters.Count == 2);
-            Assert.IsTrue(options.Hourly.Parameters.Contains(HourlyOptionsParameter.cloudcover_low));
-            Assert.IsTrue(options.Hourly.Parameters.Contains(HourlyOptionsParameter.cloudcover_high));
+            Assert.IsTrue(options.Hourly.Parameters.Contains(HourlyOptionsParameter.cloud_cover_low));
+            Assert.IsTrue(options.Hourly.Parameters.Contains(HourlyOptionsParameter.cloud_cover_high));
 
-            Assert.IsTrue(options.Daily.Parameter.Count == 2);
-            Assert.IsTrue(options.Daily.Parameter.Contains(DailyOptionsParameter.sunrise));
-            Assert.IsTrue(options.Daily.Parameter.Contains(DailyOptionsParameter.sunset));
+            Assert.IsTrue(options.Daily.Parameters.Count == 2);
+            Assert.IsTrue(options.Daily.Parameters.Contains(DailyOptionsParameter.sunrise));
+            Assert.IsTrue(options.Daily.Parameters.Contains(DailyOptionsParameter.sunset));
         }
     }
 }

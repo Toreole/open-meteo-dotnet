@@ -22,19 +22,19 @@ namespace OpenMeteo
         /// WMO Weather interpretation code.
         /// To get an actual string representation use <see cref="OpenMeteo.OpenMeteoClient.WeathercodeToString(int)"/>
         /// </summary>
-        public int? Weathercode { get; set; }
+        public int? Weather_code { get; set; }
 
         /// <summary>
         /// Windspeed. Unit defined in <see cref="WeatherForecastOptions.Windspeed_Unit"/>
         /// </summary>
         /// <value></value>
-        public float? Windspeed_10m { get; set; }
+        public float? Wind_speed_10m { get; set; }
 
 		/// <summary>
 		/// Wind direction in degrees
 		/// </summary>
-		public int? Winddirection_10m { get; set; }
-		public float? Windgusts_10m { get; set; }
+		public int? Wind_direction_10m { get; set; }
+		public float? Wind_gusts_10m { get; set; }
 
         public int? Relative_humidity_2m { get; set; }
         public float? Apparent_temperature { get; set; }
@@ -52,12 +52,12 @@ namespace OpenMeteo
 		public float? Cloud_cover_mid { get; set; }
 		public float? Cloud_cover_high { get; set; }
 
-		public float? Windspeed_80m { get; set; }
-		public float? Windspeed_120m { get; set; }
-		public float? Windspeed_180m { get; set; }
-		public int? Winddirection_80m { get; set; }
-		public int? Winddirection_120m { get; set; }
-		public int? Winddirection_180m { get; set; }
+		public float? Wind_speed_80m { get; set; }
+		public float? Wind_speed_120m { get; set; }
+		public float? Wind_speed_180m { get; set; }
+		public int? Wind_direction_80m { get; set; }
+		public int? Wind_direction_120m { get; set; }
+		public int? Wind_direction_180m { get; set; }
 
         public float? Shortwave_radiation { get; set; }
 

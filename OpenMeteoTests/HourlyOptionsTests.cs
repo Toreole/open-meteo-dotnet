@@ -14,9 +14,9 @@ namespace OpenMeteoTests
             var options = new HourlyOptions();
 
             Assert.AreEqual(0, options.Parameters.Count);
-            options.Add(HourlyOptionsParameter.winddirection_80m);
+            options.Add(HourlyOptionsParameter.wind_direction_80m);
             Assert.AreEqual(1, options.Parameters.Count);
-            Assert.IsTrue(options.Parameters.Contains(HourlyOptionsParameter.winddirection_80m));
+            Assert.IsTrue(options.Parameters.Contains(HourlyOptionsParameter.wind_direction_80m));
             
         }
 
@@ -25,8 +25,8 @@ namespace OpenMeteoTests
         {
             var options = new HourlyOptions();
 
-            options.Add(HourlyOptionsParameter.soil_moisture_3_9cm);
-            options.Add(HourlyOptionsParameter.soil_moisture_3_9cm);
+            options.Add(HourlyOptionsParameter.soil_moisture_3_to_9cm);
+            options.Add(HourlyOptionsParameter.soil_moisture_3_to_9cm);
 
             Assert.AreEqual(1, options.Count);
         }
@@ -38,7 +38,7 @@ namespace OpenMeteoTests
             options.Daily = DailyOptions.All;
             options.Hourly = HourlyOptions.All;
 
-            Assert.IsTrue(options.Daily.Parameter.Count > 0);
+            Assert.IsTrue(options.Daily.Parameters.Count > 0);
             Assert.IsTrue(options.Hourly.Parameters.Count > 0);
 
             foreach(var dailyOption in (DailyOptionsParameter[])Enum.GetValues(typeof(DailyOptionsParameter)))
@@ -58,7 +58,7 @@ namespace OpenMeteoTests
             var hourly = HourlyOptions.All;
             int oldCount = hourly.Count;
 
-            hourly.Add(HourlyOptionsParameter.cloudcover);
+            hourly.Add(HourlyOptionsParameter.cloud_cover);
             
             Assert.AreEqual(oldCount, hourly.Count);
         }

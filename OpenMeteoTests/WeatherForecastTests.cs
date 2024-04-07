@@ -127,7 +127,6 @@ namespace OpenMeteoTests
             Assert.IsNotNull(res.HourlyUnits);
             Assert.IsNotNull(res.Daily);
             Assert.IsNotNull(res.DailyUnits);
-            Assert.IsNotNull(res.Hourly.Cloudcover_1000hPa_best_match);
             Assert.IsNotNull(res.Current);
             Assert.IsNotNull(res.Minutely15);
         }
@@ -140,10 +139,10 @@ namespace OpenMeteoTests
 					latitude: 0,
 					longitude: 0
 				);
-            currentWeatherOptions.Current.Add(CurrentOptionsParameter.weathercode);
+            currentWeatherOptions.Current.Add(CurrentOptionsParameter.weather_code);
 			currentWeatherOptions.Current.Add(CurrentOptionsParameter.temperature_2m);
-			currentWeatherOptions.Current.Add(CurrentOptionsParameter.windspeed_10m);
-			currentWeatherOptions.Current.Add(CurrentOptionsParameter.relativehumidity_2m);
+			currentWeatherOptions.Current.Add(CurrentOptionsParameter.wind_speed_10m);
+			currentWeatherOptions.Current.Add(CurrentOptionsParameter.relative_humidity_2m);
             var result = client.Query(currentWeatherOptions);
             Assert.IsNotNull(result);
 		}

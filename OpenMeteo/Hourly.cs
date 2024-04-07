@@ -10,7 +10,7 @@ namespace OpenMeteo
     {
         public string[]? Time { get; set; }
         public float?[]? Temperature_2m { get; set; }
-        public int?[]? Relativehumidity_2m { get; set; }
+        public int?[]? Relative_humidity_2m { get; set; }
         public float?[]? Dewpoint_2m { get; set; }
         public float?[]? Apparent_temperature { get; set; }
         public float?[]? Precipitation { get; set; }
@@ -31,15 +31,15 @@ namespace OpenMeteo
         public float?[]? Et0_fao_evapotranspiration { get; set; }
         public float?[]? Vapor_pressure_deficit { get; set; }
         public float?[]? Cape { get; set; }
-        public float?[]? Windspeed_10m { get; set; }
-        public float?[]? Windspeed_80m { get; set; }
-        public float?[]? Windspeed_120m { get; set; }
-        public float?[]? Windspeed_180m { get; set; }
-        public int?[]? Winddirection_10m { get; set; }
-        public int?[]? Winddirection_80m { get; set; }
-        public int?[]? Winddirection_120m { get; set; }
-        public int?[]? Winddirection_180m { get; set; }
-        public float?[]? Windgusts_10m { get; set; }
+        public float?[]? Wind_speed_10m { get; set; }
+        public float?[]? Wind_speed_80m { get; set; }
+        public float?[]? Wind_speed_120m { get; set; }
+        public float?[]? Wind_speed_180m { get; set; }
+        public int?[]? Wind_direction_10m { get; set; }
+        public int?[]? Wind_direction_80m { get; set; }
+        public int?[]? Wind_direction_120m { get; set; }
+        public int?[]? Wind_direction_180m { get; set; }
+        public float?[]? Wind_gusts_10m { get; set; }
         public float?[]? Temperature_80m { get; set; }
         public float?[]? Temperature_120m { get; set; }
         public float?[]? Temperature_180m { get; set; }

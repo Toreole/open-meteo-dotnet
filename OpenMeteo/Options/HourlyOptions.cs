@@ -49,7 +49,7 @@ namespace OpenMeteo.Options
         /// <summary>
         /// Relative humidity at 2 meters above ground
         /// </summary>
-        relativehumidity_2m,
+        relative_humidity_2m,
         /// <summary>
         /// Dew point temperature at 2 meters above ground
         /// </summary>
@@ -85,39 +85,39 @@ namespace OpenMeteo.Options
         /// <summary>
         /// Wind speed at 10m above ground. Standard level.
         /// </summary>
-		windspeed_10m,
+		wind_speed_10m,
         /// <summary>
         /// Wind speed at 80m above ground.
         /// </summary>
-		windspeed_80m,
+		wind_speed_80m,
         /// <summary>
         /// Wind speed at 120m above ground
         /// </summary>
-		windspeed_120m,
+		wind_speed_120m,
         /// <summary>
         /// Wind speed at 180m above ground
         /// </summary>
-		windspeed_180m,
+		wind_speed_180m,
         /// <summary>
         /// Wind direction at 10m above ground
         /// </summary>
-		winddirection_10m,
+		wind_direction_10m,
 		/// <summary>
 		/// Wind direction at 80m above ground
 		/// </summary>
-		winddirection_80m,
+		wind_direction_80m,
 		/// <summary>
 		/// Wind direction at 120m above ground
 		/// </summary>
-		winddirection_120m,
+		wind_direction_120m,
 		/// <summary>
 		/// Wind direction at 180m above ground
 		/// </summary>
-		winddirection_180m,
+		wind_direction_180m,
         /// <summary>
         /// Gusts at 10m above ground as a maximum of the preceeding hour
         /// </summary>
-		windgusts_10m,
+		wind_gusts_10m,
         /// <summary>
         /// Shortwave solar radiation as average of the preceeding hour. This is equal to the total global horizontal irradiation
         /// </summary>
