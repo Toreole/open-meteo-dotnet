@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace OpenMeteo
+namespace OpenMeteo.Options
 {
     public class AirQualityOptions
     {
@@ -99,7 +99,7 @@ namespace OpenMeteo
         {
             public static HourlyOptions All { get { return new HourlyOptions((HourlyOptionsParameter[])Enum.GetValues(typeof(HourlyOptionsParameter))); } }
 
-            public List<AirQualityOptions.HourlyOptionsParameter> Parameter { get { return new List<HourlyOptionsParameter>(_parameter); } }
+            public List<HourlyOptionsParameter> Parameter { get { return new List<HourlyOptionsParameter>(_parameter); } }
 
             public int Count => _parameter.Count;
 
@@ -133,7 +133,7 @@ namespace OpenMeteo
 
             public void Add(HourlyOptionsParameter param)
             {
-                if (this._parameter.Contains(param)) return;
+                if (_parameter.Contains(param)) return;
 
                 _parameter.Add(param);
             }
@@ -153,7 +153,7 @@ namespace OpenMeteo
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                return this.GetEnumerator();
+                return GetEnumerator();
             }
 
             public void Clear()
@@ -179,21 +179,21 @@ namespace OpenMeteo
 
         public enum HourlyOptionsParameter
         {
-            pm10, 
-            pm2_5, 
-            carbon_monoxide, 
-            nitrogen_dioxide, 
-            sulphur_dioxide, 
-            ozone, 
-            aerosol_optical_depth, 
-            dust, 
-            uv_index, 
-            uv_index_clear_sky, 
-            alder_pollen, 
-            birch_pollen, 
-            grass_pollen, 
-            mugwort_pollen, 
-            olive_pollen, 
+            pm10,
+            pm2_5,
+            carbon_monoxide,
+            nitrogen_dioxide,
+            sulphur_dioxide,
+            ozone,
+            aerosol_optical_depth,
+            dust,
+            uv_index,
+            uv_index_clear_sky,
+            alder_pollen,
+            birch_pollen,
+            grass_pollen,
+            mugwort_pollen,
+            olive_pollen,
             ragweed_pollen,
             european_aqi,
             european_aqi_pm2_5,

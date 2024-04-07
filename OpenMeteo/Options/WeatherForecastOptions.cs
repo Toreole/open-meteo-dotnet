@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenMeteo
+namespace OpenMeteo.Options
 {
     public class WeatherForecastOptions
     {
@@ -128,7 +128,7 @@ namespace OpenMeteo
             Timeformat = TimeformatType.iso8601;
             Cell_Selection = CellSelectionType.land;
             Timezone = "GMT";
-            
+
             Start_date = string.Empty;
             End_date = string.Empty;
         }
@@ -142,7 +142,7 @@ namespace OpenMeteo
             Timeformat = TimeformatType.iso8601;
             Cell_Selection = CellSelectionType.land;
             Timezone = "GMT";
-            
+
             Start_date = string.Empty;
             End_date = string.Empty;
         }

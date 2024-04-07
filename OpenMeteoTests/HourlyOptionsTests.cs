@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenMeteo;
+using OpenMeteo.Options;
 using System;
 
 namespace OpenMeteoTests
@@ -12,10 +13,10 @@ namespace OpenMeteoTests
         {
             var options = new HourlyOptions();
 
-            Assert.AreEqual(0, options.Parameter.Count);
+            Assert.AreEqual(0, options.Parameters.Count);
             options.Add(HourlyOptionsParameter.winddirection_80m);
-            Assert.AreEqual(1, options.Parameter.Count);
-            Assert.IsTrue(options.Parameter.Contains(HourlyOptionsParameter.winddirection_80m));
+            Assert.AreEqual(1, options.Parameters.Count);
+            Assert.IsTrue(options.Parameters.Contains(HourlyOptionsParameter.winddirection_80m));
             
         }
 
@@ -38,7 +39,7 @@ namespace OpenMeteoTests
             options.Hourly = HourlyOptions.All;
 
             Assert.IsTrue(options.Daily.Parameter.Count > 0);
-            Assert.IsTrue(options.Hourly.Parameter.Count > 0);
+            Assert.IsTrue(options.Hourly.Parameters.Count > 0);
 
             foreach(var dailyOption in (DailyOptionsParameter[])Enum.GetValues(typeof(DailyOptionsParameter)))
             {

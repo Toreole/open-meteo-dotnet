@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenMeteo;
+using OpenMeteo.Options;
 
 namespace OpenMeteoTests
 {
@@ -20,7 +21,7 @@ namespace OpenMeteoTests
             Assert.IsNotNull(options.Current);
             Assert.IsNotNull(options.Minutely15);
             Assert.AreEqual(0, options.Daily.Parameter.Count);
-            Assert.AreEqual(0, options.Hourly.Parameter.Count);
+            Assert.AreEqual(0, options.Hourly.Parameters.Count);
             Assert.AreEqual(0, options.Current.Parameter.Count);
             Assert.AreEqual(0, options.Minutely15.Parameter.Count);
         }
@@ -73,9 +74,9 @@ namespace OpenMeteoTests
             options.Hourly.Add(HourlyOptionsParameter.cloudcover_low);
             options.Hourly.Add(HourlyOptionsParameter.cloudcover_high);
 
-            Assert.IsTrue(options.Hourly.Parameter.Count == 2);
-            Assert.IsTrue(options.Hourly.Parameter.Contains(HourlyOptionsParameter.cloudcover_low));
-            Assert.IsTrue(options.Hourly.Parameter.Contains(HourlyOptionsParameter.cloudcover_high));
+            Assert.IsTrue(options.Hourly.Parameters.Count == 2);
+            Assert.IsTrue(options.Hourly.Parameters.Contains(HourlyOptionsParameter.cloudcover_low));
+            Assert.IsTrue(options.Hourly.Parameters.Contains(HourlyOptionsParameter.cloudcover_high));
 
             Assert.IsTrue(options.Daily.Parameter.Count == 2);
             Assert.IsTrue(options.Daily.Parameter.Contains(DailyOptionsParameter.sunrise));

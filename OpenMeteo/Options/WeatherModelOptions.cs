@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
-namespace OpenMeteo
+namespace OpenMeteo.Options
 {
     /// <summary>
     /// Weather models Variables (https://open-meteo.com/en/docs)
@@ -58,7 +58,7 @@ namespace OpenMeteo
         public void Add(WeatherModelOptionsParameter param)
         {
             // Check that the parameter isn't already added
-            if (this._parameter.Contains(param)) return;
+            if (_parameter.Contains(param)) return;
 
             _parameter.Add(param);
         }
@@ -77,7 +77,7 @@ namespace OpenMeteo
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         public void Clear()
@@ -101,7 +101,7 @@ namespace OpenMeteo
     }
 
     public enum WeatherModelOptionsParameter
-    { 
+    {
         best_match,
         ecmwf_ifs04,
         ecmwf_ifs025,

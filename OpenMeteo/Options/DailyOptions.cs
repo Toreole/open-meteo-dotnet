@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace OpenMeteo
+namespace OpenMeteo.Options
 {
     public class DailyOptions : IEnumerable, ICollection<DailyOptionsParameter>
     {
@@ -11,7 +11,7 @@ namespace OpenMeteo
         /// </summary>
         /// <returns></returns>
         public static DailyOptions All { get { return new DailyOptions((DailyOptionsParameter[])Enum.GetValues(typeof(DailyOptionsParameter))); } }
-        
+
         /// <summary>
         /// Gets a copy of elements contained in the List.
         /// </summary>
@@ -97,7 +97,7 @@ namespace OpenMeteo
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
     }
 

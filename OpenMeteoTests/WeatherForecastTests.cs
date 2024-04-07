@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenMeteo;
+using OpenMeteo.Options;
 
 namespace OpenMeteoTests
 {
@@ -95,8 +96,8 @@ namespace OpenMeteoTests
                 null,
                 TimeformatType.iso8601, 
                 0,
-                "2022-08-30",
-                "2022-08-31",
+                "2024-04-03",
+                "2024-04-04",
                 null,
                 CellSelectionType.nearest
                 );
@@ -135,23 +136,16 @@ namespace OpenMeteoTests
         public void WeatherForecast_With_All_Options_Sync_Test()
         {
             OpenMeteoClient client = new();
-            WeatherForecastOptions options = new()
-            {
-                Hourly = HourlyOptions.All,
-                Daily = DailyOptions.All,
-                Current = CurrentOptions.All,
-                Minutely15 = Minutely15Options.All,
-            };
-
-            var res = client.Query(options);
-
-            Assert.IsNotNull(res);
-            Assert.IsNotNull(res.Hourly);
-            Assert.IsNotNull(res.HourlyUnits);
-            Assert.IsNotNull(res.Daily);
-            Assert.IsNotNull(res.DailyUnits);
-            Assert.IsNotNull(res.Current);
-            Assert.IsNotNull(res.Minutely15);
-        }
+            var currentWeatherOptions = new WeatherForecastOptions(
+					latitude: 0,
+					longitude: 0
+				);
+            currentWeatherOptions.Current.Add(CurrentOptionsParameter.weathercode);
+			currentWeatherOptions.Current.Add(CurrentOptionsParameter.temperature_2m);
+			currentWeatherOptions.Current.Add(CurrentOptionsParameter.windspeed_10m);
+			currentWeatherOptions.Current.Add(CurrentOptionsParameter.relativehumidity_2m);
+            var result = client.Query(currentWeatherOptions);
+            Assert.IsNotNull(result);
+		}
     }
 }

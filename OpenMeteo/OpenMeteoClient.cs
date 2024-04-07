@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Globalization;
+using OpenMeteo.Options;
 
 namespace OpenMeteo
 {
@@ -366,7 +367,7 @@ namespace OpenMeteo
                 uri.Query += "&end_date=" + options.End_date;
 
             // Now we iterate through hourly and daily
-
+            var x = HourlyOptions.All();
             // Hourly
             if (options.Hourly.Count > 0)
             {
